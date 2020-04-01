@@ -25,8 +25,8 @@ betterThanBefore.setups([
     gitDummyCommit(['DIGI-1234: build: first build setup', 'BREAKING CHANGE: New build system.'])
     gitDummyCommit(['[DIGI-1234]: ci(travis): add TravisCI pipeline', 'BREAKING CHANGE: Continuously integrated.'])
     gitDummyCommit(['feat: amazing new module', 'BREAKING CHANGE: Not backward compatible.'])
-    gitDummyCommit(['DIGI-1234: fix(compile): avoid a bug', 'BREAKING CHANGE: The Change is huge.'])
-    gitDummyCommit(['DIGI-1234: perf(ngOptions): make it faster', ' closes #1, #2'])
+    gitDummyCommit(['[DIGI-1234] fix(compile): avoid a bug', 'BREAKING CHANGE: The Change is huge.'])
+    gitDummyCommit(['DIGI-1234 perf(ngOptions): make it faster', ' closes #1, #2'])
     gitDummyCommit('revert(ngOptions): bad commit')
     gitDummyCommit('fix(*): oops')
   },
@@ -83,7 +83,7 @@ describe('bravura jira preset', function () {
         expect(chunk).to.include('amazing new module')
         expect(chunk).to.include('**compile:** avoid a bug')
         expect(chunk).to.include('make it faster')
-        expect(chunk).to.include(', closes [#1](https://github.com/conventional-changelog/conventional-changelog/issues/1) [#2](https://github.com/conventional-changelog/conventional-changelog/issues/2)')
+        expect(chunk).to.include(', closes [#1](https://github.com/ztan/conventional-changelog-jira/issues/1) [#2](https://github.com/ztan/conventional-changelog-jira/issues/2)')
         expect(chunk).to.include('New build system.')
         expect(chunk).to.include('Not backward compatible.')
         expect(chunk).to.include('**compile:** The Change is huge.')
@@ -119,7 +119,7 @@ describe('bravura jira preset', function () {
       })
       .pipe(through(function (chunk) {
         chunk = chunk.toString()
-        expect(chunk).to.include('[#133](https://github.com/conventional-changelog/conventional-changelog/issues/133)')
+        expect(chunk).to.include('[#133](https://github.com/ztan/conventional-changelog-jira/issues/133)')
         done()
       }))
   })
@@ -135,8 +135,8 @@ describe('bravura jira preset', function () {
       })
       .pipe(through(function (chunk) {
         chunk = chunk.toString()
-        expect(chunk).to.include('[#88](https://github.com/conventional-changelog/conventional-changelog/issues/88)')
-        expect(chunk).to.not.include('closes [#88](https://github.com/conventional-changelog/conventional-changelog/issues/88)')
+        expect(chunk).to.include('[#88](https://github.com/ztan/conventional-changelog-jira/issues/88)')
+        expect(chunk).to.not.include('closes [#88](https://github.com/ztan/conventional-changelog-jira/issues/88)')
         done()
       }))
   })
@@ -273,9 +273,9 @@ describe('bravura jira preset', function () {
       .pipe(through(function (chunk, enc, cb) {
         chunk = chunk.toString()
 
-        expect(chunk).to.include('(https://github.com/conventional-changelog/conventional-changelog/compare')
-        expect(chunk).to.include('](https://github.com/conventional-changelog/conventional-changelog/commit/')
-        expect(chunk).to.include('](https://github.com/conventional-changelog/conventional-changelog/issues/')
+        expect(chunk).to.include('(https://github.com/ztan/conventional-changelog-jira/compare')
+        expect(chunk).to.include('](https://github.com/ztan/conventional-changelog-jira/commit/')
+        expect(chunk).to.include('](https://github.com/ztan/conventional-changelog-jira/issues/')
 
         i++
         cb()
