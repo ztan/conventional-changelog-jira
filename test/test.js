@@ -31,7 +31,7 @@ betterThanBefore.setups([
     gitDummyCommit('fix(*): oops')
   },
   function () {
-    gitDummyCommit(['DIGI-1234: feat(awesome): addresses the issue brought up in #133'])
+    gitDummyCommit(['[DIGI-2234] feat(awesome): addresses the issue brought up in #133'])
   },
   function () {
     gitDummyCommit(['DIGI-1234: feat(awesome): fix #88'])
@@ -120,6 +120,21 @@ describe('bravura jira preset', function () {
       .pipe(through(function (chunk) {
         chunk = chunk.toString()
         expect(chunk).to.include('[#133](https://github.com/ztan/conventional-changelog-jira/issues/133)')
+        done()
+      }))
+  })
+
+  it('should replace [A-Z]+-[0-9]+ with Bravura issue URL', function (done) {
+
+    conventionalChangelogCore({
+      config: preset
+    })
+      .on('error', function (err) {
+        done(err)
+      })
+      .pipe(through(function (chunk) {
+        chunk = chunk.toString()
+        expect(chunk).to.include('[DIGI-2234](https://helpdesk.bravurasolutions.com/browse/DIGI-2234)')
         done()
       }))
   })

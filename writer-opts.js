@@ -77,6 +77,19 @@ function getWriterOpts () {
             return `[#${issue}](${url}${issue})`
           })
         }
+        let jiraPrefix = ''
+        commit.header.replace(/^\[([A-Z]+-[0-9]+)\]/g, (_, issue) => {
+          issues.push(issue)
+          jiraPrefix = `[${issue}](https://helpdesk.bravurasolutions.com/browse/${issue})`
+          return jiraPrefix
+        })
+        commit.subject = commit.subject.replace(/\[([A-Z]+-[0-9]+)\]/g, (_, issue) => {
+          issues.push(issue)
+          return `[${issue}](https://helpdesk.bravurasolutions.com/browse/${issue})`
+        })
+        if (jiraPrefix) {
+          commit.subject = commit.subject + ' ' + jiraPrefix
+        }
         if (context.host) {
           // User URLs.
           commit.subject = commit.subject.replace(/\B@([a-z0-9](?:-?[a-z0-9/]){0,38})/g, (_, username) => {
