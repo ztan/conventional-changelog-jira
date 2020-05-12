@@ -27,6 +27,7 @@ function getWriterOpts () {
     transform: (commit, context) => {
       let discard = true
       const issues = []
+      context.buildNumber = process.env['build-number']
 
       commit.notes.forEach(note => {
         note.title = 'BREAKING CHANGES'

@@ -67,6 +67,7 @@ betterThanBefore.setups([
 describe('bravura jira preset', function () {
   it('should work if there is no semver tag', function (done) {
     preparing(1)
+    process.env['build-number'] = '509.001'
 
     conventionalChangelogCore({
       config: preset
@@ -95,6 +96,7 @@ describe('bravura jira preset', function () {
         expect(chunk).to.include('Reverts')
         expect(chunk).to.include('bad commit')
         expect(chunk).to.include('BREAKING CHANGE')
+        expect(chunk).to.include(' (build: 509.001)')
 
         expect(chunk).to.not.include('ci')
         expect(chunk).to.not.include('feat')
