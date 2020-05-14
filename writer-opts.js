@@ -89,7 +89,7 @@ function getWriterOpts () {
           return `[${issue}](https://helpdesk.bravurasolutions.com/browse/${issue})`
         })
         if (jiraPrefix) {
-          commit.subject = commit.subject + ' ' + jiraPrefix
+          commit.subject = commit.subject + ' (' + jiraPrefix + ')'
         }
         if (context.host) {
           // User URLs.
