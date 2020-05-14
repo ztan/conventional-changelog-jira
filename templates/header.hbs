@@ -15,7 +15,7 @@
   {{~else}}
     {{~@root.repoUrl}}
   {{~/if~}}
-  /compare/diff?sourceBranch=refs%2Ftags%2F{{previousTag}}&targetBranch=refs%2Ftags%2F{{currentTag}})
+  /compare/diff?targetBranch=refs%2Ftags%2F{{previousTag}}&sourceBranch=refs%2Ftags%2F{{currentTag}})
 {{~else}}
   {{~version}}
 {{~/if}}

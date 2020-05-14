@@ -240,7 +240,7 @@ describe('bravura jira preset', function () {
 
         expect(chunk).to.include('(http://unknown/compare')
         expect(chunk).to.include('](http://unknown/commits/')
-        expect(chunk).to.include('diff?sourceBranch=refs%2Ftags%2Fv1.0.0&targetBranch=refs%2Ftags%2Fv2.0.0')
+        expect(chunk).to.include('diff?targetBranch=refs%2Ftags%2Fv1.0.0&sourceBranch=refs%2Ftags%2Fv2.0.0')
 
         i++
         cb()

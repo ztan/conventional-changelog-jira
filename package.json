@@ -1,6 +1,6 @@
 {
   "name": "@bravura/conventional-changelog-jira",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "conventional-changelog jira preset",
   "main": "index.js",
   "scripts": {
